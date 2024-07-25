@@ -22,6 +22,7 @@ data(movies)
 
 It's always a good idea to do some recon work first. What do the data look like? How many observations and variables do we have? What are the variable names?
 
+This set of data looks like it is genres of movies ranging from Action to Shorts from years 1939 up until 2002. 
 
 ```{r}
 # View() opens the data in another window. 'head(movies)' will show the first few rows.
@@ -34,18 +35,68 @@ dim(movies)     # always rows x columns
 names(movies)   # a good way to keep track of variable names for later use
 ```
 
+```{r}
+mean(movies$rating)
+```
+```{r}
+median(movies$rating)
+```
+The average median budget is at 6.1.
+
+This code block shows us the mean of the movie rating at 5.9. 
+
+The average median budget is at 
+```{r}
+newdata<-na.omit(movies$budget)
+```
+
+```{r}
+median(newdata)
+```
+The median budget for the movies is 3 million dollars. 
+
+```{r}
+median(movies$length)
+```
+The average rating of movies longer than 60 minutes would be 90 minutes. 
+
+
 
 ## Motivation for Wrangling
 
-Now that we have a sense of our data, we can start to dig a little deeper into the details of things. One of the main reasons data wrangling is so important to statisticians and data scientists is that we often collect waaaay more data than we actually need to answer a particular question. You may want to ask the following questions:
+Now that we have a sense of our data, we can start to dig a little deeper into the details of things. One of the main reasons data wrangling is so important to statisticians and data scientists is that we often collect way more data than we actually need to answer a particular question. You may want to ask the following questions:
 
 - What is the average movie rating?
+The average rating is at 5.9.
 
 - What is the median budget for a movie?
+
+The average median budget is at 
+```{r}
+newdata<-na.omit(movies$budget)
+```
+
+```{r}
+median(newdata)
+```
+The median budget for the movies is 3 million dollars. 
+
 
 But after looking at all of the movies recorded here, the more precise questions might turn out to be:
 
 - What is the average rating *of movies longer than 60 minutes?*
+
+```{r}
+smovies<-sort(movies$length)
+```
+
+```{r}
+print(smovies[11400])
+```
+```{r}
+
+```
+
 
 - What is the median budget *of animated films compared to documentaries?*
 
